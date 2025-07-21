@@ -7,18 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+
     <h1 class="text-3xl font-bold align-middle text-center bg-green-600 text-white">Rotten Cucumbers </h1>
+    <main class="flex">
     <aside  class =" h-screen w-24 bg-gray-200 flex-col gap-3 py-5 px-5">
-        <a class="cursor-pointer">Movies</a>
+        <a class="cursor-pointer selected:true">Movies</a>
         <a class="cursor-pointer">Directors</a>
         <a class="cursor-pointer">Genres</a>
     </aside>
-    <main class="list">
-<div id="list" clas="flex-wrap">
-</div>
+   <section id="list" class="flex-wrap w-full px-3 gap-y-10"> 
+
+    
     </main>
 </body>
 <script src="data.js"></script>
+<script src="films.js"> </script>
 <script src="view.js"></script>
-<script src="films.js"></script>
 </html>
