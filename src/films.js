@@ -5,6 +5,13 @@ array.forEach(array =>  result.some(director => director === array.director) ? n
 return result
 }
 
+function getAllMovies(array) {
+  let result = []
+  array.forEach(movie => result.push(movie.title))
+  console.log(result)
+  return result
+}
+
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
  let result = []
@@ -14,7 +21,10 @@ function getMoviesFromDirector(array, director) {
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-  
+  let result = []
+  result = array.filter(movie => movie.director === director)
+  let average = result.reduce((acc, movie) => acc + movie.score, 0) / result.length
+  return average.toFixed(1)
 }
 
 // Exercise 4:  Alphabetic order by title 
@@ -49,6 +59,7 @@ function bestFilmOfYear() {
 if (typeof module !== 'undefined') {
   module.exports = {
     getAllDirectors,
+    getAllMovies,
     getMoviesFromDirector,
     moviesAverageOfDirector,
     orderAlphabetically,
