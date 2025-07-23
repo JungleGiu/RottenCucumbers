@@ -5,6 +5,7 @@ const {
   moviesAverageOfDirector,
   orderAlphabetically,
   orderByYear,
+  orderByGenre,
   moviesAverageByCategory,
   hoursToMinutes,
   bestFilmOfYear,
@@ -291,11 +292,41 @@ describe('Function "orderByYear"', () => {
 });
 
 // Exercise 6
+describe('Function "orderByGenre"', () => {
+  it('should be declared', () => {
+    expect(typeof orderByGenre).toBe('function');
+  });
+
+  it('should return an array', () => {
+    expect(orderByGenre(movies) instanceof Array).toBe(true);
+  });
+
+  it('should return a new array, not update the original one', () => {
+    expect(orderByGenre(movies)).not.toEqual(movies);
+  });
+  it('should return an array of categories', () => {
+    expect(typeof orderByGenre(movies)[0]).toBe('string');
+  });
+ 
+  it ('shoud not have reapeated categories', () => {
+    expect(orderByGenre(movies).length).toEqual(21)
+  })
+});
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be declared', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
   });
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
+  });
+  it ('should be different from NaN', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).not.toBe(NaN)
+  })
+  it ('should return the average score of movies selecting only the genre films. With 2 decimals! ', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).toBe(8.32)
+  })
+
 });
 
 // Exercise 7

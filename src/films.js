@@ -1,7 +1,7 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
 let result = []
-array.forEach(array =>  result.some(director => director === array.director) ? null : result.push(array.director))
+array.forEach(movie =>  result.some(director => director === movie.director) ? null : result.push(movie.director))
 return result
 }
 
@@ -50,9 +50,22 @@ copy.sort((a,b) =>  a.year !== b.year ? a.year - b.year :  a.title.localeCompare
 return copy
 }
 
-// Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function orderByGenre(array) {
+  let result = []
+array.forEach(movie => movie.genre.forEach(genre =>  (!result.includes(genre)) ? result.push(genre) : null))
 
+return result
+}
+function moviesByGenre(array, genre) {
+ let result = array.filter(movie => movie.genre.includes(genre))
+return result
+}
+// Exercise 6: Calculate the average of the movies in a category
+function moviesAverageByCategory(array, genre) {
+
+copy= array.filter(movie => movie.genre.includes(genre))
+let average = copy.reduce((acc, movie) => acc + parseFloat(movie.score), 0) / copy.length
+return parseFloat(average.toFixed(2))
 }
 
 // Exercise 7: Modify the duration of movies to minutes
@@ -77,6 +90,8 @@ if (typeof module !== 'undefined') {
     moviesAverageOfDirector,
     orderAlphabetically,
     orderByYear,
+    orderByGenre,
+    moviesByGenre,
     moviesAverageByCategory,
     hoursToMinutes,
     bestFilmOfYear,

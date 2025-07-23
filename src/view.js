@@ -138,4 +138,59 @@ const printDirectors = (movies) => {
         list.appendChild(p)
     })
 }
-    
+   const printAllGenres = () =>{
+    list.textContent = ""
+    let result = orderByGenre(movies)
+    result.forEach(genre => {
+        let p = document.createElement('p')
+        p.classList.add('inline-block')
+        p.classList.add('text-gray-700')
+        p.classList.add('text-sm')
+        p.classList.add('font-bold')
+        p.classList.add('mb-2')
+        p.classList.add('mr-6')
+        p.classList.add('cursor-pointer')
+        p.classList.add('bg-green-500')
+        p.classList.add('hover:text-black')
+        p.textContent = genre
+        p.addEventListener('click', () => {
+            list.textContent = ""
+            let average = moviesAverageByCategory(movies, genre)
+            let result = moviesByGenre(movies, genre)
+            let title = document.createElement('h1')
+            let score = document.createElement('p')
+            score.textContent = `⭐️ ${average}` 
+            score.classList.add('text-xl')
+            score.classList.add('font-bold')
+            score.classList.add('mb-2')     
+            score.classList.add('block')
+            score.classList.add('mx-auto')
+            title.textContent = genre
+            title.classList.add('text-2xl')
+            title.classList.add('font-bold')
+            title.classList.add('mb-2')
+            list.appendChild(title)
+            list.appendChild(score)
+            result.forEach(movie    => {
+                let p = document.createElement('p')
+                p.classList.add('inline-block')
+                p.classList.add('text-gray-700')
+                p.classList.add('text-sm')        
+                p.classList.add('font-bold')
+                p.classList.add('mb-2')
+                p.classList.add('mr-6')
+                p.classList.add('cursor-pointer')
+                p.classList.add('bg-green-500')
+                p.classList.add('hover:text-black')
+                p.textContent = movie.title
+                list.appendChild(p)
+            })
+        })
+        list.appendChild(p)
+    })
+   }
+
+   const genresNav = document.getElementById('genres-nav')
+   genresNav.addEventListener('click', () => {
+    printAllGenres()
+   })
