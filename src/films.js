@@ -8,7 +8,6 @@ return result
 function getAllMovies(array) {
   let result = []
   array.forEach(movie => result.push(movie.title))
-  console.log(result)
   return result
 }
 
@@ -23,18 +22,32 @@ function getMoviesFromDirector(array, director) {
 function moviesAverageOfDirector(array, director) {
   let result = []
   result = array.filter(movie => movie.director === director)
-  let average = result.reduce((acc, movie) => acc + movie.score, 0) / result.length
-  return average.toFixed(1)
+  let average = result.reduce((acc, movie) => acc + parseFloat(movie.score), 0) / result.length
+  return parseFloat(average.toFixed(2))
 }
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  
+let result =[]
+let copy =[...array]
+copy.sort(function (a, b) {
+  if (a.title < b.title) {
+    return -1;
+  }
+  if (a.title > b.title) {
+    return 1;
+  }
+  return 0;
+});
+copy.forEach(movie => result.push(movie.title))
+return result.slice(0, 20)
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(array) {
+let copy = [...array]
+copy.sort((a,b) =>  a.year !== b.year ? a.year - b.year :  a.title.localeCompare(b.title))
+return copy
 }
 
 // Exercise 6: Calculate the average of the movies in a category
