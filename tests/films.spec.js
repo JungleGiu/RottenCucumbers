@@ -6,6 +6,7 @@ const {
   orderAlphabetically,
   orderByYear,
   orderByGenre,
+  moviesByGenre,
   moviesAverageByCategory,
   hoursToMinutes,
   bestFilmOfYear,
@@ -312,6 +313,58 @@ describe('Function "orderByGenre"', () => {
     expect(orderByGenre(movies).length).toEqual(21)
   })
 });
+
+describe('Function "moviesByGenre"', () => {
+  it('should be declared', () => {
+    expect(typeof moviesByGenre).toBe('function');
+  })
+
+  it('should return an array', () => {
+    expect(moviesByGenre(movies, 'Drama') instanceof Array).toBe(true)
+  })
+
+  it('should return a new array, not update the original one', () => {
+    expect(moviesByGenre(movies, 'Drama')).not.toEqual(movies)
+  })
+
+  it('should return an array of movies from a specific genre', () => {
+    expect(moviesByGenre(movies, 'Music')).toEqual([
+  {
+    title: 'The Pianist',
+    year: 2002,
+    director: 'Roman Polanski',
+    duration: '2h 30min',
+    genre: ['Biography', 'Drama', 'Music', 'War'],
+    score: 8.5
+  },
+    {
+    title: 'Whiplash',
+    year: 2014,
+    director: 'Damien Chazelle',
+    duration: '1h 47min',
+    genre: ['Drama', 'Music'],
+    score: 8.5
+  },
+  {
+    title: 'Amadeus',
+    year: 1984,
+    director: 'Milos Forman',
+    duration: '2h 40min',
+    genre: ['Biography', 'Drama', 'History', 'Music'],
+    score: 8.3
+  },
+    {
+    title: 'La La Land',
+    year: 2016,
+    director: 'Damien Chazelle',
+    duration: '2h 8min',
+    genre: ['Comedy', 'Drama', 'Music', 'Musical', 'Romance'],
+    score: 8.2
+  }])
+  })
+})
+
+
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
   it('should be declared', () => {
