@@ -69,8 +69,16 @@ return parseFloat(average.toFixed(2))
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(array) {
+let result = []
+array.map(movie => {
+  let hours = movie.duration.split('h')[0]
+  let minutes
+  if(hours.length !== 2){
+  minutes = movie.duration.split('h')[1].split('min')[0]}
+  result.push({...movie, duration: minutes? parseInt(hours * 60) + parseInt(minutes) : parseInt(hours) * 60})
+})      
+return result
 }
 
 // Exercise 8: Get the best film of a year
