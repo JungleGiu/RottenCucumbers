@@ -62,8 +62,7 @@ return result
 }
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, genre) {
-
-copy= array.filter(movie => movie.genre.includes(genre))
+copy= moviesByGenre(array, genre)
 let average = copy.reduce((acc, movie) => acc + parseFloat(movie.score), 0) / copy.length
 return parseFloat(average.toFixed(2))
 }
@@ -82,8 +81,14 @@ return result
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function moviesByYear(array, year) {
+let result = array.filter(movie => movie.year === year)
+return result
+}
+function bestFilmOfYear(array, year) {
+let result = moviesByYear(array, year)
+let best = Math.max(...result.map(movie => movie.score))
+return result.filter(movie => movie.score === best)
 }
 
 
