@@ -81,6 +81,11 @@ return result
 }
 
 // Exercise 8: Get the best film of a year
+function orderByYear(array) {
+let copy = [...array]
+copy.sort((a,b) =>  a.year !== b.year ? a.year - b.year :  a.title.localeCompare(b.title))
+return copy
+}
 function moviesByYear(array, year) {
 let result = array.filter(movie => movie.year === year)
 return result
@@ -107,6 +112,8 @@ if (typeof module !== 'undefined') {
     moviesByGenre,
     moviesAverageByCategory,
     hoursToMinutes,
+    moviesByYear,
+    orderByYear,
     bestFilmOfYear,
   };
 }

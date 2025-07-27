@@ -1,3 +1,5 @@
+
+
 const list = document.getElementById('list')
 
 
@@ -194,3 +196,63 @@ const printDirectors = (movies) => {
    genresNav.addEventListener('click', () => {
     printAllGenres()
    })
+
+   const yearsNav = document.getElementById('years-nav')
+   yearsNav.addEventListener('click', () => {
+    printAllYears()
+   })
+
+   const printAllYears = () => {
+    list.textContent = ""
+    let result = orderByYear(movies)
+    result.forEach(year => {
+        let p = document.createElement('p')
+        p.classList.add('inline-block')
+        p.classList.add('text-gray-700')
+        p.classList.add('text-sm')
+        p.classList.add('font-bold')
+        p.classList.add('mb-2')
+        p.classList.add('mr-6')
+        p.classList.add('cursor-pointer')
+        p.classList.add('bg-green-500')
+        p.classList.add('hover:text-black')
+        p.textContent = year.year
+        p.addEventListener('click', () => {
+            list.textContent = ""
+            let result = moviesByYear(movies, year.year)
+            result.forEach(movie => {
+                let p = document.createElement('p')
+                p.classList.add('inline-block')
+                p.classList.add('text-gray-700')
+                p.classList.add('text-sm')        
+                p.classList.add('font-bold')
+                p.classList.add('mb-2')
+                p.classList.add('mr-6')
+                p.classList.add('cursor-pointer')
+                p.classList.add('bg-green-500')
+                p.classList.add('hover:text-black')
+                p.textContent = movie.title
+                list.appendChild(p) 
+            })
+            let best = bestFilmOfYear(movies, year.year)
+            let p = document.createElement('p')
+            let title = document.createElement('h1')
+            let score = document.createElement('p')
+            p.textContent = "Best film of the year"
+            score.textContent = `⭐️ ${best[0].score}` 
+            score.classList.add('text-xl')
+            score.classList.add('font-bold')
+            score.classList.add('mb-2')     
+            score.classList.add('block')
+            score.classList.add('mx-auto')
+            title.textContent = best[0].title
+            title.classList.add('text-2xl')
+            title.classList.add('font-bold')
+            title.classList.add('mb-2')
+            list.appendChild(p)
+            list.appendChild(title)
+            list.appendChild(score)
+        })        
+        list.appendChild(p)
+    })
+   }        
