@@ -9,7 +9,7 @@ const {
   moviesByGenre,
   moviesAverageByCategory,
   hoursToMinutes,
-  bestFilmOfYear,
+  bestFilmOfYear
 } = require('../src/films');
 
 // Exercise 1
@@ -96,7 +96,6 @@ describe('Function "getMoviesFromDirector"', () => {
       }
     ]);
   });
-
 });
 
 // Exercise 3
@@ -106,7 +105,9 @@ describe('Function "moviesAverageOfDirector"', () => {
   });
 
   it('should return a number', () => {
-    expect(typeof moviesAverageOfDirector(movies, 'Stanley Kubrick')).toBe('number');
+    expect(typeof moviesAverageOfDirector(movies, 'Stanley Kubrick')).toBe(
+      'number'
+    );
   });
 
   it('should be different from NaN', () => {
@@ -114,34 +115,38 @@ describe('Function "moviesAverageOfDirector"', () => {
   });
 
   it(' should return the average score of movies selecting only the director films. With 2 decimals! ', () => {
-    expect(moviesAverageOfDirector([
-      {
-        title: 'Paths of Glory',
-        year: 1957,
-        director: 'Stanley Kubrick',
-        duration: '1h 28min',
-        genre: ['Drama', 'War'],
-        score: 8.4
-      },
-      {
-        title: 'Django Unchained',
-        year: 2012,
-        director: 'Quentin Tarantino',
-        duration: '2h 45min',
-        genre: ['Drama', 'Western'],
-        score: 8.4
-      },
-      {
-        title: 'Pulp Fiction',
-        year: 1994,
-        director: 'Quentin Tarantino',
-        duration: '2h 34min',
-        genre: ['Crime', 'Drama'],
-        score: 8.9
-      }
-    ], 'Quentin Tarantino')).toBe(8.65);
+    expect(
+      moviesAverageOfDirector(
+        [
+          {
+            title: 'Paths of Glory',
+            year: 1957,
+            director: 'Stanley Kubrick',
+            duration: '1h 28min',
+            genre: ['Drama', 'War'],
+            score: 8.4
+          },
+          {
+            title: 'Django Unchained',
+            year: 2012,
+            director: 'Quentin Tarantino',
+            duration: '2h 45min',
+            genre: ['Drama', 'Western'],
+            score: 8.4
+          },
+          {
+            title: 'Pulp Fiction',
+            year: 1994,
+            director: 'Quentin Tarantino',
+            duration: '2h 34min',
+            genre: ['Crime', 'Drama'],
+            score: 8.9
+          }
+        ],
+        'Quentin Tarantino'
+      )
+    ).toBe(8.65);
   });
-
 });
 
 // Exercise 4
@@ -308,62 +313,62 @@ describe('Function "orderByGenre"', () => {
   it('should return an array of categories', () => {
     expect(typeof orderByGenre(movies)[0]).toBe('string');
   });
- 
-  it ('shoud not have reapeated categories', () => {
-    expect(orderByGenre(movies).length).toEqual(21)
-  })
+
+  it('shoud not have reapeated categories', () => {
+    expect(orderByGenre(movies).length).toEqual(21);
+  });
 });
 
 describe('Function "moviesByGenre"', () => {
   it('should be declared', () => {
     expect(typeof moviesByGenre).toBe('function');
-  })
+  });
 
   it('should return an array', () => {
-    expect(moviesByGenre(movies, 'Drama') instanceof Array).toBe(true)
-  })
+    expect(moviesByGenre(movies, 'Drama') instanceof Array).toBe(true);
+  });
 
   it('should return a new array, not update the original one', () => {
-    expect(moviesByGenre(movies, 'Drama')).not.toEqual(movies)
-  })
+    expect(moviesByGenre(movies, 'Drama')).not.toEqual(movies);
+  });
 
   it('should return an array of movies from a specific genre', () => {
     expect(moviesByGenre(movies, 'Music')).toEqual([
-  {
-    title: 'The Pianist',
-    year: 2002,
-    director: 'Roman Polanski',
-    duration: '2h 30min',
-    genre: ['Biography', 'Drama', 'Music', 'War'],
-    score: 8.5
-  },
-    {
-    title: 'Whiplash',
-    year: 2014,
-    director: 'Damien Chazelle',
-    duration: '1h 47min',
-    genre: ['Drama', 'Music'],
-    score: 8.5
-  },
-  {
-    title: 'Amadeus',
-    year: 1984,
-    director: 'Milos Forman',
-    duration: '2h 40min',
-    genre: ['Biography', 'Drama', 'History', 'Music'],
-    score: 8.3
-  },
-    {
-    title: 'La La Land',
-    year: 2016,
-    director: 'Damien Chazelle',
-    duration: '2h 8min',
-    genre: ['Comedy', 'Drama', 'Music', 'Musical', 'Romance'],
-    score: 8.2
-  }])
-  })
-})
-
+      {
+        title: 'The Pianist',
+        year: 2002,
+        director: 'Roman Polanski',
+        duration: '2h 30min',
+        genre: ['Biography', 'Drama', 'Music', 'War'],
+        score: 8.5
+      },
+      {
+        title: 'Whiplash',
+        year: 2014,
+        director: 'Damien Chazelle',
+        duration: '1h 47min',
+        genre: ['Drama', 'Music'],
+        score: 8.5
+      },
+      {
+        title: 'Amadeus',
+        year: 1984,
+        director: 'Milos Forman',
+        duration: '2h 40min',
+        genre: ['Biography', 'Drama', 'History', 'Music'],
+        score: 8.3
+      },
+      {
+        title: 'La La Land',
+        year: 2016,
+        director: 'Damien Chazelle',
+        duration: '2h 8min',
+        genre: ['Comedy', 'Drama', 'Music', 'Musical', 'Romance'],
+        score: 8.2
+      }
+    ]);
+  });
+});
 
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
@@ -373,13 +378,12 @@ describe('Function "moviesAverageByCategory"', () => {
   it('should return a number', () => {
     expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
   });
-  it ('should be different from NaN', () => {
-    expect(moviesAverageByCategory(movies, 'Drama')).not.toBe(NaN)
-  })
-  it ('should return the average score of movies selecting only the genre films. With 2 decimals! ', () => {
-    expect(moviesAverageByCategory(movies, 'Drama')).toBe(8.32)
-  })
-
+  it('should be different from NaN', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).not.toBe(NaN);
+  });
+  it('should return the average score of movies selecting only the genre films. With 2 decimals! ', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).toBe(8.32);
+  });
 });
 
 // Exercise 7
@@ -455,7 +459,7 @@ describe('Function "bestFilmOfYear"', () => {
         duration: '1h 28min',
         genre: ['Drama', 'War'],
         score: 5
-      },
+      }
     ];
     expect(bestFilmOfYear(testArr, 1957)).toEqual([
       {
@@ -468,5 +472,4 @@ describe('Function "bestFilmOfYear"', () => {
       }
     ]);
   });
-
 });
