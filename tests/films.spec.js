@@ -1,4 +1,4 @@
-const movies = require('../src/data');
+const movies = require('../scripts/data');
 const {
   getAllDirectors,
   getMoviesFromDirector,
@@ -10,7 +10,7 @@ const {
   moviesAverageByCategory,
   hoursToMinutes,
   bestFilmOfYear
-} = require('../src/films');
+} = require('../scripts/films');
 
 // Exercise 1
 describe('Function "getAllDirectors"', () => {
